@@ -1,5 +1,11 @@
-p1=input("enter player x's name: ")
-p2=input("enter player o's name: ")
+while True:
+    p1=input("enter player x's name: ")
+    p2=input("enter player o's name: ")
+    if p1!=p2:
+        break
+    else:
+        print('names are same. enter some other name')
+    
 s='''
 1 | 2 | 3
 ---------
@@ -16,20 +22,26 @@ while z:
     print(s)
     if t%2==0:
         n=input(f"{p1}'s(x) turn(enter the number): ")
-        if n not in l1 and n not in l2:
+        if n not in l1 and n not in l2 and n in '123456789':
             l1.append(n)
             s=s.replace(n,'x')
+        elif n in l1 or n in l2:
+            print('\nthat number has already been taken. enter some other number ')
+            continue
         else:
-            print('\nthat number has already been taken. enter some other number: ')
-            continue  
+            print('\ninvalid input. try again.')
+            continue
     else:
         n=input(f"{p2}'s(o) turn(enter the number): ")
-        if n not in l1 and n not in l2:
+        if n not in l1 and n not in l2 and n in '123456789':
             l2.append(n)
             s=s.replace(n,'o')
+        elif n in l1 or n in l2:
+            print('\nthat number has already been taken. enter some other number ')
+            continue
         else:
-            print('\nthat number has already been taken. enter some other number: ')
-            continue  
+            print('\ninvalid input. try again.')
+            continue
     if len(l1)>=3:
         for i in l:
             for j in i:
